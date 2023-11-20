@@ -1,0 +1,16 @@
+2023/05/18 13:51:39 | 127.0.0.1 | POST | /auth/register | 201 | 1.858832083s |
+Headers: Content-Length=182&Content-Type=application/json&Accept=*/*&Cache-Control=no-cache&Connection=keep-alive&Host=localhost:8080&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Postman-Token=fb96f572-7af1-4e40-bef4-caf1ecc91ebd&Accept-Encoding=gzip, deflate, br
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/05/18 13:53:09 | 127.0.0.1 | POST | /auth/register | 201 | 1.747871709s |
+Headers: Accept=*/*&Cache-Control=no-cache&Connection=keep-alive&Host=localhost:8080&Content-Length=182&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Postman-Token=ade624aa-bc41-49fd-aff2-ab57e7b5c049&Accept-Encoding=gzip, deflate, br
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/05/18 13:53:32 | 127.0.0.1 | POST | /auth/register | 400 | 61.980583ms |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Cache-Control=no-cache&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Content-Length=182&Content-Type=application/json&Postman-Token=a7f8e9c6-ed3a-45b7-a2dc-3a333531bd59&Host=localhost:8080
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/05/19 00:57:17 | 127.0.0.1 | POST | /auth/register | 201 | 2.214518583s |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Postman-Token=b63ad1c5-9061-4064-99fe-c2fce9b14413&Host=localhost:8080&Content-Length=182&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Cache-Control=no-cache
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
