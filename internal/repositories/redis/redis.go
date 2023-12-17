@@ -21,7 +21,6 @@ func Connect() *redis.Client {
 	rdb := redis.NewClient(opt)
 
 	if _, err := rdb.Ping(ctx).Result(); err != nil {
-
 		panic(err)
 	}
 

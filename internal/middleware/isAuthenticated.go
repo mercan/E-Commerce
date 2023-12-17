@@ -3,6 +3,7 @@ package middleware
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
+	"strings"
 
 	"github.com/mercan/ecommerce/internal/config"
 	"github.com/mercan/ecommerce/internal/repositories/redis"
@@ -11,7 +12,20 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var redisRepository = redis.NewRepository()
+var authRedisRepo = redis.NewAuthenticationRedisRepository()
+
+func extractToken(Bearer string) (string, error) {
+	splitToken := strings.Split(Bearer, "Bearer ")
+	if len(splitToken) != 2 {
+		return "", fiber.ErrUnauthorized
+	}
+
+	if splitToken[1] != "" {
+		return splitToken[1], nil
+	}
+
+	return "", fiber.ErrUnauthorized
+}
 
 // IsAuthenticated middleware checks if the request has an Authorization header
 func IsAuthenticated(ctx *fiber.Ctx) error {
@@ -24,8 +38,8 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 		})
 	}
 
-	token := Bearer[7:]
-	if token == "" {
+	token, err := extractToken(Bearer)
+	if err != nil {
 		return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
 			Message: "Unauthorized",
 			Status:  "error",
@@ -51,7 +65,7 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 
 	if claims, ok := jwtToken.Claims.(jwt.MapClaims); ok && jwtToken.Valid {
 		// Check if token is in redis (blacklist)
-		existingToken, err := redisRepository.IsTokenInBlacklist(token)
+		existingToken, err := authRedisRepo.IsTokenInBlacklist(token)
 		if err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(utils.FailureAuthResponse{
 				Message: "Internal Server Error",

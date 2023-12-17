@@ -8,14 +8,14 @@ type Review struct {
 	Reviews   []UserReview       `json:"reviews,omitempty" bson:"reviews,omitempty" validate:"required"`
 }
 
-type UserType struct {
-	ID   primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Name string             `json:"name,omitempty" bson:"name,omitempty"`
-}
-
 type UserReview struct {
 	User      UserType `json:"user,omitempty" bson:"user,omitempty"`
 	Comment   string   `json:"comment,omitempty" bson:"comment,omitempty" validate:"required"`
 	Rating    int      `json:"rating,omitempty" bson:"rating,omitempty" validate:"required"`
 	CreatedAt string   `json:"created_at,omitempty" bson:"created_at,omitempty"`
+}
+
+type UserType struct {
+	ID   primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Name string             `json:"name,omitempty" bson:"name,omitempty"`
 }

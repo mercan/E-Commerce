@@ -12,6 +12,26 @@ import (
 
 var client = Connect()
 
+func createUserIndexes(client *mongo.Client) error {
+	userIndexModel := []mongo.IndexModel{
+		{
+			Keys:    bson.M{"email": 1},
+			Options: options.Index().SetUnique(true),
+		},
+		{
+			Keys:    bson.M{"phone_number": 1},
+			Options: options.Index().SetUnique(true),
+		},
+	}
+
+	if _, err := client.Database(config.GetMongoDBConfig().Database).Collection("users").Indexes().CreateMany(context.Background(),
+		userIndexModel); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func Connect() *mongo.Client {
 	if config.GetMongoDBConfig().URI == "" {
 		log.Fatal("MongoDB Host is not set")
@@ -31,20 +51,8 @@ func Connect() *mongo.Client {
 		log.Fatalf("MongoDB ping error: %v", err)
 	}
 
-	// Create User Index
-	userIndexModel := []mongo.IndexModel{
-		{
-			Keys:    bson.M{"email": 1},
-			Options: options.Index().SetUnique(true),
-		},
-		{
-			Keys:    bson.M{"phone_number": 1},
-			Options: options.Index().SetUnique(true),
-		},
-	}
-
-	if _, err := client.Database(config.GetMongoDBConfig().Database).Collection("users").Indexes().CreateMany(ctx, userIndexModel); err != nil {
-		log.Fatalf("MongoDB Users Index Error: %v", err)
+	if err := createUserIndexes(client); err != nil {
+		log.Fatalf("MongoDB create user indexes error: %v", err)
 	}
 
 	log.Println("Connected to MongoDB")

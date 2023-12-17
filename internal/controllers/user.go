@@ -11,14 +11,16 @@ import (
 )
 
 type UserController struct {
-	userService  services.IUserService
-	rabbitMQRepo *rabbitmq.Repository
+	userService services.UserService
+	EmailQueue  rabbitmq.EmailQueueManager
+	PhoneQueue  rabbitmq.PhoneQueueManager
 }
 
 func NewUserController() *UserController {
 	return &UserController{
-		userService:  services.NewUserService(),
-		rabbitMQRepo: rabbitmq.NewRepository(),
+		userService: services.NewUserService(),
+		EmailQueue:  rabbitmq.NewEmailQueueManager(),
+		PhoneQueue:  rabbitmq.NewPhoneQueueManager(),
 	}
 }
 
@@ -55,7 +57,9 @@ func (controller *UserController) Register(ctx *fiber.Ctx) error {
 	}
 
 	// Publish email verification message to RabbitMQ
-	controller.rabbitMQRepo.PublishEmailVerification(user.FirstName, user.Email)
+	controller.EmailQueue.PublishEmailVerification(user.FirstName, user.Email)
+	// Publish SMS verification message to RabbitMQ
+	controller.PhoneQueue.PublishPhoneVerification(user.PhoneNumber)
 
 	return ctx.Status(fiber.StatusCreated).JSON(types.UserRegisterResponse{
 		UserBaseResponse: types.UserBaseResponse{

@@ -7,30 +7,43 @@ import (
 	"time"
 )
 
-var ctx = context.Background()
-
-type Repository struct {
-	Client   *redis.Client
-	NilError error
+type AuthenticationRepository interface {
+	SetBlacklistToken(token string, expiration time.Duration) error
+	IsTokenInBlacklist(token string) (bool, error)
+	SetVerificationPhone(phone string, verificationCode string) error
+	GetVerificationPhone(phone string) (string, error)
+	DelVerificationPhone(phone string) error
+	SetVerificationEmail(email string, verificationCode string) error
+	GetVerificationEmail(email string) (string, error)
+	DelVerificationEmail(email string) error
+	SetForgotPasswordToken(email string, token string) error
+	GetForgotPasswordToken(email string) (string, error)
+	DelForgotPasswordToken(email string) error
+	NilError() error
 }
 
-func NewRepository() *Repository {
-	return &Repository{
-		Client:   client,
-		NilError: redis.Nil,
+type AuthenticationRedisRepository struct {
+	Ctx    context.Context
+	Client *redis.Client
+}
+
+func NewAuthenticationRedisRepository() AuthenticationRepository {
+	return &AuthenticationRedisRepository{
+		Ctx:    context.Background(),
+		Client: client,
 	}
 }
 
-func (repository *Repository) SetBlacklistToken(token string, expiration time.Duration) error {
-	return repository.Client.Set(ctx, "token:"+token, token, expiration).Err()
+func (ar *AuthenticationRedisRepository) NilError() error {
+	return redis.Nil
 }
 
-func (repository *Repository) GetToken(token string) (string, error) {
-	return repository.Client.Get(ctx, "token:"+token).Result()
+func (ar *AuthenticationRedisRepository) SetBlacklistToken(token string, expiration time.Duration) error {
+	return ar.Client.Set(ar.Ctx, "token:"+token, token, expiration).Err()
 }
 
-func (repository *Repository) IsTokenInBlacklist(token string) (bool, error) {
-	result, err := repository.Client.Exists(ctx, "token:"+token).Result()
+func (ar *AuthenticationRedisRepository) IsTokenInBlacklist(token string) (bool, error) {
+	result, err := ar.Client.Exists(ar.Ctx, "token:"+token).Result()
 
 	if err != nil {
 		return false, err
@@ -39,44 +52,44 @@ func (repository *Repository) IsTokenInBlacklist(token string) (bool, error) {
 	return result == 1, nil
 }
 
-func (repository *Repository) SetVerificationPhone(phone string, verificationCode string) error {
+func (ar *AuthenticationRedisRepository) SetVerificationPhone(phone string, verificationCode string) error {
 	expiration := config.GetTimeConfig().PhoneExpireTime * time.Second
 
-	return repository.Client.Set(ctx, "phone:"+phone, verificationCode, expiration).Err()
+	return ar.Client.Set(ar.Ctx, "phone:"+phone, verificationCode, expiration).Err()
 }
 
-func (repository *Repository) GetVerificationPhone(phone string) (string, error) {
-	return repository.Client.Get(ctx, "phone:"+phone).Result()
+func (ar *AuthenticationRedisRepository) GetVerificationPhone(phone string) (string, error) {
+	return ar.Client.Get(ar.Ctx, "phone:"+phone).Result()
 }
 
-func (repository *Repository) DelVerificationPhone(phone string) error {
-	return repository.Client.Del(ctx, "phone:"+phone).Err()
+func (ar *AuthenticationRedisRepository) DelVerificationPhone(phone string) error {
+	return ar.Client.Del(ar.Ctx, "phone:"+phone).Err()
 }
 
-func (repository *Repository) SetVerificationEmail(email string, verificationCode string) error {
+func (ar *AuthenticationRedisRepository) SetVerificationEmail(email string, verificationCode string) error {
 	expiration := config.GetTimeConfig().EmailExpireTime * time.Second
 
-	return repository.Client.Set(ctx, "email:"+email, verificationCode, expiration).Err()
+	return ar.Client.Set(ar.Ctx, "email:"+email, verificationCode, expiration).Err()
 }
 
-func (repository *Repository) GetVerificationEmail(email string) (string, error) {
-	return repository.Client.Get(ctx, "email:"+email).Result()
+func (ar *AuthenticationRedisRepository) GetVerificationEmail(email string) (string, error) {
+	return ar.Client.Get(ar.Ctx, "email:"+email).Result()
 }
 
-func (repository *Repository) DelVerificationEmail(email string) error {
-	return repository.Client.Del(ctx, "email:"+email).Err()
+func (ar *AuthenticationRedisRepository) DelVerificationEmail(email string) error {
+	return ar.Client.Del(ar.Ctx, "email:"+email).Err()
 }
 
-func (repository *Repository) SetForgotPasswordToken(email string, token string) error {
+func (ar *AuthenticationRedisRepository) SetForgotPasswordToken(email string, token string) error {
 	expiration := config.GetTimeConfig().ForgotPasswordExpireTime * time.Second
 
-	return repository.Client.Set(ctx, "forgot-password:"+email, token, expiration).Err()
+	return ar.Client.Set(ar.Ctx, "forgot-password:"+email, token, expiration).Err()
 }
 
-func (repository *Repository) GetForgotPasswordToken(email string) (string, error) {
-	return repository.Client.Get(ctx, "forgot-password:"+email).Result()
+func (ar *AuthenticationRedisRepository) GetForgotPasswordToken(email string) (string, error) {
+	return ar.Client.Get(ar.Ctx, "forgot-password:"+email).Result()
 }
 
-func (repository *Repository) DelForgotPasswordToken(email string) error {
-	return repository.Client.Del(ctx, "forgot-password:"+email).Err()
+func (ar *AuthenticationRedisRepository) DelForgotPasswordToken(email string) error {
+	return ar.Client.Del(ar.Ctx, "forgot-password:"+email).Err()
 }

@@ -30,8 +30,10 @@ func main() {
 	defer rabbitmq.Close()
 
 	// Setup RabbitMQ Consumer
-	go rabbitmq.ConsumeEmailVerificationQueue()
-	//go rabbitmq.ConsumePhoneVerificationQueue()
+	emailQueue := rabbitmq.NewEmailQueueManager()
+	go emailQueue.ConsumeEmailVerificationQueue()
+	phoneQueue := rabbitmq.NewPhoneQueueManager()
+	go phoneQueue.ConsumePhoneVerificationQueue()
 
 	// Setup User Routes
 	routes.SetupUserRoutes(app)
