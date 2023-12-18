@@ -30,6 +30,9 @@ func LoggerConfig() logger.Config {
 				}
 
 				if bodyMap, ok := body.(map[string]interface{}); ok {
+					if _, ok := bodyMap["phone_number"]; ok {
+						bodyMap["phone_number"] = "********"
+					}
 					if _, ok := bodyMap["password"]; ok {
 						bodyMap["password"] = "********"
 					}

@@ -21,9 +21,13 @@
 go.work
 
 # .DS_Store (remove the comment below to include it)
-.DS_Store
+**/.DS_Store
 
 # IntelliJ IDEA (remove the comment below to include it)
-.idea/
+.idea/*
+**/.idea/*
 
 .tmp/
+
+# Environment variables file
+.env
