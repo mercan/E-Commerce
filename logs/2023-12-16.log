@@ -1,0 +1,73 @@
+2023/12/16 00:07:39 | 127.0.0.1 | POST | /auth/register | 400 | 75.100375ms |
+Headers: Accept-Encoding=gzip, deflate, br&Host=localhost:8080&Postman-Token=bb427c72-3811-483e-839f-0fb026d193de&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Cache-Control=no-cache&Connection=keep-alive&Content-Length=182&Content-Type=application/json
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/12/16 00:08:22 | 127.0.0.1 | POST | /auth/register | 201 | 1.85598775s |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Host=localhost:8080&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Cache-Control=no-cache&Postman-Token=0ea5f81a-878d-4ff0-8625-e5fdfdcc923c&Connection=keep-alive&Content-Length=182&Content-Type=application/json
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/12/16 00:09:16 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 571.756625ms |
+Headers: User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=79221e71-9b58-4e97-91ff-a6109ac23b9b&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: 
+
+2023/12/16 00:09:17 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 581.200542ms |
+Headers: Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=c2cfb289-b15b-4c24-8779-b4a00590a234&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0
+Body: 
+
+2023/12/16 00:09:18 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 530.394708ms |
+Headers: Accept=*/*&Cache-Control=no-cache&Postman-Token=ce6d49d7-2469-40d3-a372-1217e15178c5&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA
+Body: 
+
+2023/12/16 00:09:19 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 813.508334ms |
+Headers: Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=f4062eef-1241-4591-8574-d5abbeaf31d0&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: 
+
+2023/12/16 00:09:20 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 627.765292ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=3180a083-5790-4b98-bbe1-b4b66f26bc96
+Body: 
+
+2023/12/16 00:09:37 | 127.0.0.1 | GET | /auth/resend-verification-phone | 400 | 1.250021208s |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=5f26d2ad-c5af-45ae-91dd-7dbd2f312cd0
+Body: 
+
+2023/12/16 00:09:39 | 127.0.0.1 | GET | /auth/resend-verification-phone | 400 | 496.988875ms |
+Headers: Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=adfbe692-20c8-40c3-8b5f-a356c0f849c0&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0
+Body: 
+
+2023/12/16 00:12:28 | 127.0.0.1 | GET | /auth/resend-verification-phone | 200 | 1.343424166s |
+Headers: User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=71960f7e-5ae6-40ae-a2ef-46f736d47a23&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: 
+
+2023/12/16 00:12:32 | 127.0.0.1 | GET | /auth/resend-verification-phone | 200 | 662.873083ms |
+Headers: Postman-Token=06ea503f-a16d-4aac-a6c1-a215399f27ea&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache
+Body: 
+
+2023/12/16 00:18:14 | 127.0.0.1 | GET | /auth/resend-verification-phone | 200 | 1.738252584s |
+Headers: Postman-Token=828e49c3-e92b-4683-be86-157cae0672d5&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache
+Body: 
+
+2023/12/16 00:18:16 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 1.163606s |
+Headers: Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*&Cache-Control=no-cache&Postman-Token=46335730-c4b5-402e-8a2d-c624f175cd8d&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: 
+
+2023/12/16 00:18:20 | 127.0.0.1 | GET | /auth/resend-verification-email | 200 | 497.716833ms |
+Headers: Cache-Control=no-cache&Postman-Token=b0873bb9-35da-4d4c-8e65-fd166fd39ad9&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.35.0&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE3MDI3NjA5MDUsImlhdCI6MTcwMjY3NDUwNSwiaWQiOiI2NTdjYzA0NzY5MzNmYTFjNTlhZDIzMjYiLCJyb2xlIjoidXNlciJ9.XCX8P4__wYMKFuuqJL4tVL0tnYmFybpHExyCgbEyKlwvPL12GXCbV9qxWo-xPpaOkmbcpA97uUtyMyeau3ShkA&Accept=*/*
+Body: 
+
+2023/12/16 01:00:27 | 127.0.0.1 | POST | /auth/login | 200 | 1.837359417s |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Cache-Control=no-cache&Connection=keep-alive&Host=localhost:8080&Content-Length=67&Postman-Token=e819a4fe-05e6-43af-a6a7-f8d4782bbb66&Accept-Encoding=gzip, deflate, br
+Body: {"email":"ultuma00@gmail.com","password":"********"}
+
+2023/12/16 01:00:56 | 127.0.0.1 | POST | /auth/login | 422 | 173.958µs |
+Headers: Content-Type=application/json&Cache-Control=no-cache&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=116&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Postman-Token=8fe8ca05-8db2-46a7-8c13-268c8dd7661d
+Body: {
+    "email": "ultuma00@gmail.com",
+    "password": "1234567890",
+    "sadxasd":"123x123",
+    "3123z":"213z3,1",
+}
+
+2023/12/16 01:01:01 | 127.0.0.1 | POST | /auth/login | 200 | 1.513841375s |
+Headers: Postman-Token=c9b44840-478f-4d9e-b57e-7fd1748d3a6c&Accept-Encoding=gzip, deflate, br&Host=localhost:8080&Content-Length=115&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Content-Type=application/json&Cache-Control=no-cache&Connection=keep-alive
+Body: {"3123z":"213z3,1","email":"ultuma00@gmail.com","password":"********","sadxasd":"123x123"}
+

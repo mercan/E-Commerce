@@ -1,0 +1,28 @@
+2023/05/11 22:39:54 | 127.0.0.1 | POST | /auth/register | 400 | 65.82525ms |
+Headers: Content-Length=182&Postman-Token=565b4396-7462-428c-b738-19bfcc66786e&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Cache-Control=no-cache
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/05/11 22:39:55 | 127.0.0.1 | POST | /auth/register | 400 | 59.190708ms |
+Headers: Content-Length=182&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept-Encoding=gzip, deflate, br&Cache-Control=no-cache&Postman-Token=d571c2a5-d10e-42bb-b9c6-850ed9b9de2f&Connection=keep-alive&Host=localhost:8080&Content-Type=application/json&Accept=*/*
+Body: {"email":"ultuma00@gmail.com","first_name":"İbrahim Can","gender":"Male","last_name":"Mercan","password":"********","phone_number":"+905422853657"}
+
+2023/05/11 22:40:06 | 127.0.0.1 | POST | /auth/login | 200 | 1.757216375s |
+Headers: Content-Length=67&Postman-Token=7993b8e2-03c2-49a3-88e5-4cd61819ccc5&Cache-Control=no-cache&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"email":"ultuma00@gmail.com","password":"********"}
+
+2023/05/11 22:40:10 | 127.0.0.1 | GET | /auth/logout | 401 | 74.625µs |
+Headers: Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2ODI2Mzc1MjMsImlhdCI6MTY4MjU1MTEyMywiaWQiOiI2NDQ1Y2Y2NmVmNGM1MGIxNThmMzIxMGQiLCJyb2xlIjoidXNlciJ9.GhCOWjGNhtZ84TxCBsr2m0KWTlM5BUIlO4dB1fBK2TIx8kqtSZLdhXtfnJHKWAJNzpIUp05UaplNDvIpjW4gqw&Accept=*/*&Cache-Control=no-cache&Postman-Token=ebd59aeb-da66-4ab8-b6a0-184188f78af4&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&User-Agent=PostmanRuntime/7.32.2
+Body: 
+
+2023/05/11 22:44:50 | 127.0.0.1 | POST | /auth/change-password | 401 | 274.415417ms |
+Headers: User-Agent=PostmanRuntime/7.32.2&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2ODM5MjA0MDgsImlhdCI6MTY4MzgzNDAwOCwiaWQiOiI2NDVjNWMzMDY4NTE4Y2Q2NDljZGQzNGQiLCJyb2xlIjoidXNlciJ9.LNzNYvsUTbLSB3Bt6ZPNH5hE22qbGW3fomzVLyqNXkJqkve74J-9OxERHPFHDbqtputmqVeI7-pBAPq8hHgXUg&Accept=*/*&Cache-Control=no-cache&Postman-Token=fd9802ef-be00-4d49-b7c3-13950e38a54a&Host=localhost:8080&Content-Length=108&Content-Type=application/json&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"new_password":"********","new_password_confirm":"1234567891","password":"********"}
+
+2023/05/11 22:45:15 | 127.0.0.1 | POST | /auth/change-password | 200 | 2.745459s |
+Headers: Host=localhost:8080&Cache-Control=no-cache&Accept-Encoding=gzip, deflate, br&Accept=*/*&Postman-Token=9e0b5820-672d-452a-ba01-bcbe23a5cfda&Connection=keep-alive&Content-Length=108&Content-Type=application/json&User-Agent=PostmanRuntime/7.32.2&Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2ODM5MjA0MDgsImlhdCI6MTY4MzgzNDAwOCwiaWQiOiI2NDVjNWMzMDY4NTE4Y2Q2NDljZGQzNGQiLCJyb2xlIjoidXNlciJ9.LNzNYvsUTbLSB3Bt6ZPNH5hE22qbGW3fomzVLyqNXkJqkve74J-9OxERHPFHDbqtputmqVeI7-pBAPq8hHgXUg
+Body: {"new_password":"********","new_password_confirm":"1234567891","password":"********"}
+
+2023/05/11 22:46:06 | 127.0.0.1 | POST | /auth/change-password | 401 | 228.386875ms |
+Headers: Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2ODM5MjA0MDgsImlhdCI6MTY4MzgzNDAwOCwiaWQiOiI2NDVjNWMzMDY4NTE4Y2Q2NDljZGQzNGQiLCJyb2xlIjoidXNlciJ9.LNzNYvsUTbLSB3Bt6ZPNH5hE22qbGW3fomzVLyqNXkJqkve74J-9OxERHPFHDbqtputmqVeI7-pBAPq8hHgXUg&Accept=*/*&Postman-Token=66bf7af7-e45c-42b0-92c7-a2304b3e4c5d&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=108&Content-Type=application/json&User-Agent=PostmanRuntime/7.32.2&Cache-Control=no-cache
+Body: {"new_password":"********","new_password_confirm":"********","password":"********"}
+
