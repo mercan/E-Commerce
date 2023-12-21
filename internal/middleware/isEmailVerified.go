@@ -7,7 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var mongoRepository = mongodb.NewRepository()
+var mongoRepository = mongodb.NewUserMongoRepository()
 
 func IsEmailVerified(ctx *fiber.Ctx) error {
 	userId := ctx.Locals("userId").(primitive.ObjectID)

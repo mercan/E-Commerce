@@ -84,7 +84,6 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 
 		// Convert id to primitive.ObjectID
 		userId, _ := primitive.ObjectIDFromHex(claims["id"].(string))
-
 		// Set user id to context
 		ctx.Locals("userId", userId)
 		// Set user role to context
