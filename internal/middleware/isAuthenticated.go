@@ -39,13 +39,24 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 
 	token, err := extractToken(Bearer)
 	if err != nil {
+		return err
+	}
+
+	if existingToken, err := authRedisRepo.IsTokenInBlacklist(token); err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Internal server error",
+		})
+	} else if existingToken {
 		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
 			Success: false,
 			Error:   "Unauthorized",
 		})
 	}
 
-	jwtToken, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+	// Parse and validate JWT token
+	claims := jwt.MapClaims{}
+	jwtToken, err := jwt.ParseWithClaims(token, &claims, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fiber.ErrUnauthorized
 		}
@@ -53,6 +64,14 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 		return []byte(config.GetJWTConfig().Secret), nil
 	})
 
+	if err != nil || !jwtToken.Valid {
+		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Unauthorized",
+		})
+	}
+
+	userId, err := primitive.ObjectIDFromHex(claims["id"].(string))
 	if err != nil {
 		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
 			Success: false,
@@ -60,39 +79,11 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 		})
 	}
 
-	if claims, ok := jwtToken.Claims.(jwt.MapClaims); ok && jwtToken.Valid {
-		// Check if token is in redis (blacklist)
-		existingToken, err := authRedisRepo.IsTokenInBlacklist(token)
-		if err != nil {
-			return ctx.Status(fiber.StatusInternalServerError).JSON(types.BaseResponse{
-				Success: false,
-				Error:   "Internal server error",
-			})
-		}
+	// Set user context with extracted data
+	ctx.Locals("userId", userId)
+	ctx.Locals("role", claims["role"])
+	ctx.Locals("exp", claims["exp"])
+	ctx.Locals("token", token)
 
-		if existingToken {
-			return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
-				Success: false,
-				Error:   "Unauthorized",
-			})
-		}
-
-		// Convert id to primitive.ObjectID
-		userId, _ := primitive.ObjectIDFromHex(claims["id"].(string))
-		// Set user id to context
-		ctx.Locals("userId", userId)
-		// Set user role to context
-		ctx.Locals("role", claims["role"])
-		// Set token expiration time to context
-		ctx.Locals("exp", claims["exp"])
-		// Set token to context
-		ctx.Locals("token", token)
-
-		return ctx.Next()
-	}
-
-	return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
-		Success: false,
-		Error:   "Unauthorized",
-	})
+	return ctx.Next()
 }

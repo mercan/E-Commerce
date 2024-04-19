@@ -15,7 +15,6 @@ import (
 // main is the entry point of the application
 func main() {
 	// Create a new Fiber app with configuration
-
 	app := fiber.New(fiber.Config{
 		AppName:       config.GetServerConfig().AppName,
 		ServerHeader:  "",
@@ -39,10 +38,6 @@ func main() {
 
 	// Setup User Routes
 	routes.SetupUserRoutes(app)
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
 
 	// Listen on the configured server port
 	if err := app.Listen(":" + config.GetServerConfig().Port); err != nil {
