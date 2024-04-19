@@ -3,10 +3,11 @@ package rabbitmq
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+
 	"github.com/mercan/ecommerce/internal/config"
 	"github.com/mercan/ecommerce/internal/services"
 	"github.com/streadway/amqp"
-	"log"
 )
 
 type EmailQueueManager interface {

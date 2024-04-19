@@ -1,0 +1,200 @@
+2024/04/10 19:23:30 | 127.0.0.1 | POST | /auth/register | 201 |  1.351826417s |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:15 | 127.0.0.1 | POST | /auth/register | 400 |   50.235292ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:16 | 127.0.0.1 | POST | /auth/register | 400 |   51.548833ms |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:16 | 127.0.0.1 | POST | /auth/register | 400 |   49.350666ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:17 | 127.0.0.1 | POST | /auth/register | 400 |   55.394459ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:17 | 127.0.0.1 | POST | /auth/register | 400 |      54.675ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:18 | 127.0.0.1 | POST | /auth/register | 400 |      52.004ms |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:19 | 127.0.0.1 | POST | /auth/register | 400 |   50.798791ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:20 | 127.0.0.1 | POST | /auth/register | 400 |   52.553875ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:20 | 127.0.0.1 | POST | /auth/register | 400 |   57.539458ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:21 | 127.0.0.1 | POST | /auth/register | 429 |      173.75µs |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:21 | 127.0.0.1 | POST | /auth/register | 429 |      22.958µs |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:23 | 127.0.0.1 | POST | /auth/register | 429 |      22.958µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:24 | 127.0.0.1 | POST | /auth/register | 429 |       22.25µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:24 | 127.0.0.1 | POST | /auth/register | 429 |      28.166µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:25 | 127.0.0.1 | POST | /auth/register | 429 |      58.583µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:25 | 127.0.0.1 | POST | /auth/register | 429 |      80.333µs |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:26 | 127.0.0.1 | POST | /auth/register | 429 |       21.25µs |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:24:27 | 127.0.0.1 | POST | /auth/register | 429 |      22.834µs |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:16 | 127.0.0.1 | POST | /auth/register | 400 |   61.239083ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:17 | 127.0.0.1 | POST | /auth/register | 400 |   49.881333ms |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:17 | 127.0.0.1 | POST | /auth/register | 400 |   49.953625ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:19 | 127.0.0.1 | POST | /auth/register | 400 |   64.940834ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:19 | 127.0.0.1 | POST | /auth/register | 400 |  110.405917ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:20 | 127.0.0.1 | POST | /auth/register | 400 |    56.71075ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:20 | 127.0.0.1 | POST | /auth/register | 400 |   51.773167ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:21 | 127.0.0.1 | POST | /auth/register | 400 |   49.148541ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:21 | 127.0.0.1 | POST | /auth/register | 400 |   70.376958ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:22 | 127.0.0.1 | POST | /auth/register | 400 |   56.441542ms |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:22 | 127.0.0.1 | POST | /auth/register | 429 |      66.417µs |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:31:23 | 127.0.0.1 | POST | /auth/register | 429 |       29.75µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:32:51 | 127.0.0.1 | POST | /auth/register | 201 |   1.31185425s |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:30 | 127.0.0.1 | POST | /auth/register | 400 |     60.1515ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:30 | 127.0.0.1 | POST | /auth/register | 400 |   58.080166ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:31 | 127.0.0.1 | POST | /auth/register | 400 |   57.233125ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:31 | 127.0.0.1 | POST | /auth/register | 400 |   52.772833ms |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:32 | 127.0.0.1 | POST | /auth/register | 400 |   65.142584ms |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:33 | 127.0.0.1 | POST | /auth/register | 400 |  157.260792ms |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:34 | 127.0.0.1 | POST | /auth/register | 400 |   51.235166ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:35 | 127.0.0.1 | POST | /auth/register | 400 |    50.49675ms |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:35 | 127.0.0.1 | POST | /auth/register | 400 |   48.023667ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:36 | 127.0.0.1 | POST | /auth/register | 429 |      22.875µs |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:36 | 127.0.0.1 | POST | /auth/register | 429 |          22µs |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:38 | 127.0.0.1 | POST | /auth/register | 429 |        23.5µs |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:39 | 127.0.0.1 | POST | /auth/register | 429 |        47.5µs |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:40 | 127.0.0.1 | POST | /auth/register | 429 |      23.042µs |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:41 | 127.0.0.1 | POST | /auth/register | 429 |      23.792µs |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:41 | 127.0.0.1 | POST | /auth/register | 429 |      21.666µs |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:41 | 127.0.0.1 | POST | /auth/register | 429 |      21.291µs |
+Headers: Host=localhost:8080&Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+
+2024/04/10 19:33:43 | 127.0.0.1 | POST | /auth/register | 429 |      21.417µs |
+Headers: Content-Length=208&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"imrcn77@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","phone_number":"********"}
+

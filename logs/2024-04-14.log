@@ -1,0 +1,84 @@
+2024/04/14 19:47:39 | 127.0.0.1 | POST | /auth/register | 201 |   1.27635475s |
+Headers: Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:47:54 | 127.0.0.1 | POST | /auth/register | 400 |    1.195542ms |
+Headers: User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=468&Content-Type=application/json
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"htt://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:49:20 | 127.0.0.1 | POST | /auth/register | 201 |  1.226508833s |
+Headers: Host=localhost:8080&Content-Length=433&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:49:36 | 127.0.0.1 | POST | /auth/register | 201 |  1.258084458s |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:49:48 | 127.0.0.1 | POST | /auth/register | 201 |  1.226973375s |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:23 | 127.0.0.1 | POST | /auth/register | 400 |   71.420541ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:24 | 127.0.0.1 | POST | /auth/register | 400 |    58.08275ms |
+Headers: Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:25 | 127.0.0.1 | POST | /auth/register | 400 |   59.626959ms |
+Headers: Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:26 | 127.0.0.1 | POST | /auth/register | 400 |   58.225625ms |
+Headers: Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:27 | 127.0.0.1 | POST | /auth/register | 400 |   58.340917ms |
+Headers: Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:27 | 127.0.0.1 | POST | /auth/register | 400 |   58.011333ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:28 | 127.0.0.1 | POST | /auth/register | 400 |   60.181625ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"https://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:51:39 | 127.0.0.1 | POST | /auth/register | 400 |      82.541µs |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=466&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"a://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 19:59:51 | 127.0.0.1 | POST | /auth/register | 201 |  1.272200041s |
+Headers: Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=466
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"a://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:09 | 127.0.0.1 | POST | /auth/register | 400 |    1.467541ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=466&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"a://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:15 | 127.0.0.1 | POST | /auth/register | 400 |      75.375µs |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=468&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"htt://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:19 | 127.0.0.1 | POST | /auth/register | 201 |   1.21180325s |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:28 | 127.0.0.1 | POST | /auth/register | 400 |   57.742541ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:28 | 127.0.0.1 | POST | /auth/register | 400 |   51.175458ms |
+Headers: Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:29 | 127.0.0.1 | POST | /auth/register | 400 |   49.276208ms |
+Headers: Connection=keep-alive&Host=localhost:8080&Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+
+2024/04/14 20:07:29 | 127.0.0.1 | POST | /auth/register | 400 |   50.480875ms |
+Headers: Content-Length=469&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36&Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"http://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+

@@ -1,0 +1,4 @@
+2024/04/15 15:04:00 | 127.0.0.1 | POST | /auth/register | 400 |    1.112916ms |
+Headers: Accept=*/*&Accept-Encoding=gzip, deflate, br&Connection=keep-alive&Host=localhost:8080&Content-Length=470&Content-Type=application/json&User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+Body: {"description":"Hello World (Test Message)","email":"ultuma00@gmail.com","first_name":"İbrahim Can","last_name":"Mercan","password":"********","social_media":{"facebook":"https://asd.com","github":"httpx://asd.com","instagram":"https://asd.com","linkedin":"https://asd.com","twitter":"https://asd.com","website":"https://asd.com","youtube":"https://asd.com"}}
+

@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/mercan/ecommerce/internal/repositories/mongodb"
-	"github.com/mercan/ecommerce/internal/utils"
+	"github.com/mercan/ecommerce/internal/types"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -14,18 +14,16 @@ func IsEmailVerified(ctx *fiber.Ctx) error {
 
 	isVerified, err := mongoRepository.CheckEmailVerified(userId)
 	if err != nil {
-		return ctx.Status(fiber.StatusInternalServerError).JSON(utils.FailureAuthResponse{
-			Message: "Internal Server Error",
-			Status:  "error",
-			Code:    fiber.StatusInternalServerError,
+		return ctx.Status(fiber.StatusInternalServerError).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Internal server error",
 		})
 	}
 
 	if !isVerified {
-		return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-			Message: "You can't access this resource. Please verify your email address.",
-			Status:  "error",
-			Code:    fiber.StatusUnauthorized,
+		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "You can't access this resource. Please verify your email address.",
 		})
 	}
 

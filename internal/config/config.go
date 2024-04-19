@@ -6,14 +6,15 @@ import (
 )
 
 type Config struct {
-	Server   ServerConfig
-	MongoDB  MongoDBConfig
-	Redis    RedisConfig
-	RabbitMQ RabbitMQConfig
-	JWT      JWTConfig
-	Twilio   TwilioConfig
-	Sendgrid SendgridConfig
-	Time     TimeConfig
+	Server     ServerConfig
+	Cloudinary CloudinaryConfig
+	MongoDB    MongoDBConfig
+	Redis      RedisConfig
+	RabbitMQ   RabbitMQConfig
+	JWT        JWTConfig
+	Twilio     TwilioConfig
+	Sendgrid   SendgridConfig
+	Time       TimeConfig
 }
 
 type ServerConfig struct {
@@ -22,12 +23,26 @@ type ServerConfig struct {
 	Port        string
 }
 
+type CloudinaryConfig struct {
+	CloudName string
+	APIKey    string
+	APISecret string
+}
+
 type MongoDBConfig struct {
-	URI      string
-	Port     string
-	Username string
-	Password string
-	Database string
+	URI         string
+	Port        string
+	Username    string
+	Password    string
+	Database    string
+	Collections MongoDBCollectionConfig
+}
+
+type MongoDBCollectionConfig struct {
+	Users    string
+	Products string
+	Orders   string
+	Payments string
 }
 
 type RedisConfig struct {
@@ -96,12 +111,23 @@ func LoadConfig() *Config {
 			Environment: viper.GetString("ENVIRONMENT"),
 			Port:        viper.GetString("PORT"),
 		},
+		Cloudinary: CloudinaryConfig{
+			CloudName: viper.GetString("CLOUDINARY_CLOUD_NAME"),
+			APIKey:    viper.GetString("CLOUDINARY_API_KEY"),
+			APISecret: viper.GetString("CLOUDINARY_API_SECRET"),
+		},
 		MongoDB: MongoDBConfig{
 			URI:      viper.GetString("MONGODB_URI"),
 			Port:     viper.GetString("MONGODB_PORT"),
 			Username: viper.GetString("MONGODB_USERNAME"),
 			Password: viper.GetString("MONGODB_PASSWORD"),
 			Database: viper.GetString("MONGODB_DATABASE"),
+			Collections: MongoDBCollectionConfig{
+				Users:    viper.GetString("MONGODB_COLLECTION_USERS"),
+				Products: viper.GetString("MONGODB_COLLECTION_PRODUCTS"),
+				Orders:   viper.GetString("MONGODB_COLLECTION_ORDERS"),
+				Payments: viper.GetString("MONGODB_COLLECTION_PAYMENTS"),
+			},
 		},
 		Redis: RedisConfig{
 			URI:      viper.GetString("REDIS_URI"),
@@ -121,8 +147,6 @@ func LoadConfig() *Config {
 			Secret:            viper.GetString("JWT_SECRET"),
 			Expiration:        viper.GetDuration("JWT_EXPIRES_IN"),
 			RefreshExpiration: viper.GetDuration("JWT_REFRESH_EXPIRES_IN"),
-			UserRole:          "user",
-			StoreRole:         "store",
 		},
 		Twilio: TwilioConfig{
 			AccountSID:        viper.GetString("TWILIO_ACCOUNT_SID"),
@@ -160,6 +184,10 @@ func GetServerConfig() ServerConfig {
 		Environment: GetConfig().Server.Environment,
 		Port:        GetConfig().Server.Port,
 	}
+}
+
+func GetCloudinaryConfig() CloudinaryConfig {
+	return GetConfig().Cloudinary
 }
 
 func GetMongoDBConfig() MongoDBConfig {

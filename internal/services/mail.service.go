@@ -1,9 +1,10 @@
 package services
 
 import (
+	"errors"
 	"github.com/mercan/ecommerce/internal/config"
+	"github.com/mercan/ecommerce/internal/helpers"
 	"github.com/mercan/ecommerce/internal/repositories/redis"
-	"github.com/mercan/ecommerce/internal/utils"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
@@ -36,7 +37,7 @@ func NewMailService() MailService {
 func (service *MailServiceImpl) SendVerificationEmail(firstName string, email string) error {
 	m := mail.NewV3Mail()
 	e := mail.NewEmail(service.sendgridFromName, service.sendgridFromEmail)
-	verificationCode := utils.GenerateVerificationCode()
+	verificationCode := helpers.GenerateVerificationCode()
 
 	m.SetFrom(e)
 	m.SetTemplateID(service.sendgridVerificationTemplateID)
@@ -53,8 +54,12 @@ func (service *MailServiceImpl) SendVerificationEmail(firstName string, email st
 	request.Method = "POST"
 	request.Body = mail.GetRequestBody(m)
 
-	if _, err := sendgrid.API(request); err != nil {
+	if response, err := sendgrid.API(request); err != nil {
 		return err
+	} else {
+		if response.StatusCode != 202 {
+			return errors.New(response.Body)
+		}
 	}
 
 	if err := service.authRedisRepo.SetVerificationEmail(email, verificationCode); err != nil {
@@ -67,7 +72,7 @@ func (service *MailServiceImpl) SendVerificationEmail(firstName string, email st
 func (service *MailServiceImpl) SendForgotPasswordEmail(email string) error {
 	m := mail.NewV3Mail()
 	e := mail.NewEmail(service.sendgridFromName, service.sendgridFromEmail)
-	forgotPasswordToken := utils.GenerateForgotPasswordToken()
+	forgotPasswordToken := helpers.GenerateForgotPasswordToken()
 	forgotPasswordLink := "http://localhost:" + config.GetServerConfig().Port + "/auth/forgot-password/" + forgotPasswordToken
 
 	m.SetFrom(e)

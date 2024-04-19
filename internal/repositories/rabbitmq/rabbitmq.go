@@ -1,9 +1,10 @@
 package rabbitmq
 
 import (
+	"log"
+
 	"github.com/mercan/ecommerce/internal/config"
 	"github.com/streadway/amqp"
-	"log"
 )
 
 var connection, channel = Connect()

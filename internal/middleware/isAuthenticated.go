@@ -3,11 +3,11 @@ package middleware
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
+	"github.com/mercan/ecommerce/internal/types"
 	"strings"
 
 	"github.com/mercan/ecommerce/internal/config"
 	"github.com/mercan/ecommerce/internal/repositories/redis"
-	"github.com/mercan/ecommerce/internal/utils"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -31,19 +31,17 @@ func extractToken(Bearer string) (string, error) {
 func IsAuthenticated(ctx *fiber.Ctx) error {
 	Bearer := ctx.Get("Authorization")
 	if Bearer == "" {
-		return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-			Message: "Unauthorized",
-			Status:  "error",
-			Code:    fiber.StatusUnauthorized,
+		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Unauthorized",
 		})
 	}
 
 	token, err := extractToken(Bearer)
 	if err != nil {
-		return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-			Message: "Unauthorized",
-			Status:  "error",
-			Code:    fiber.StatusUnauthorized,
+		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Unauthorized",
 		})
 	}
 
@@ -56,10 +54,9 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 	})
 
 	if err != nil {
-		return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-			Message: "Unauthorized",
-			Status:  "error",
-			Code:    fiber.StatusUnauthorized,
+		return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "Unauthorized",
 		})
 	}
 
@@ -67,18 +64,16 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 		// Check if token is in redis (blacklist)
 		existingToken, err := authRedisRepo.IsTokenInBlacklist(token)
 		if err != nil {
-			return ctx.Status(fiber.StatusInternalServerError).JSON(utils.FailureAuthResponse{
-				Message: "Internal Server Error",
-				Status:  "error",
-				Code:    fiber.StatusInternalServerError,
+			return ctx.Status(fiber.StatusInternalServerError).JSON(types.BaseResponse{
+				Success: false,
+				Error:   "Internal server error",
 			})
 		}
 
 		if existingToken {
-			return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-				Message: "Unauthorized",
-				Status:  "error",
-				Code:    fiber.StatusUnauthorized,
+			return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+				Success: false,
+				Error:   "Unauthorized",
 			})
 		}
 
@@ -96,9 +91,8 @@ func IsAuthenticated(ctx *fiber.Ctx) error {
 		return ctx.Next()
 	}
 
-	return ctx.Status(fiber.StatusUnauthorized).JSON(utils.FailureAuthResponse{
-		Message: "Unauthorized",
-		Status:  "error",
-		Code:    fiber.StatusUnauthorized,
+	return ctx.Status(fiber.StatusUnauthorized).JSON(types.BaseResponse{
+		Success: false,
+		Error:   "Unauthorized",
 	})
 }

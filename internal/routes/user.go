@@ -5,6 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/mercan/ecommerce/internal/controllers"
 	"github.com/mercan/ecommerce/internal/middleware"
+	"github.com/mercan/ecommerce/internal/types"
 	"time"
 )
 
@@ -19,8 +20,9 @@ func SetupUserRoutes(app *fiber.App) {
 		Max:        10,
 		Expiration: 1 * time.Minute,
 		LimitReached: func(c *fiber.Ctx) error {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{
-				"message": "Too many requests",
+			return c.Status(fiber.StatusTooManyRequests).JSON(types.BaseResponse{
+				Success: false,
+				Error:   "Too many requests",
 			})
 		},
 	})

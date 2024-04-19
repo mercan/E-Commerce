@@ -2,8 +2,8 @@ package services
 
 import (
 	"github.com/mercan/ecommerce/internal/config"
+	"github.com/mercan/ecommerce/internal/helpers"
 	"github.com/mercan/ecommerce/internal/repositories/redis"
-	"github.com/mercan/ecommerce/internal/utils"
 	"github.com/twilio/twilio-go"
 	openapi "github.com/twilio/twilio-go/rest/api/v2010"
 )
@@ -33,12 +33,12 @@ func NewSMSService() SMSService {
 
 func (service *SMSServiceImpl) SendVerificationPhone(phoneNumber string) error {
 	params := &openapi.CreateMessageParams{}
-	verificationCode := utils.GenerateVerificationCode()
+	verificationCode := helpers.GenerateVerificationCode()
 	message := "Your verification code is: " + verificationCode + "\nExpires in 10 minutes.\n\nEcommerce Demo API"
 
 	params.SetBody(message)
-	//params.SetFrom(service.twilioFromNumber)
-	params.SetMessagingServiceSid(service.twilioMessageServiceSID)
+	params.SetFrom(service.twilioFromNumber)
+	//params.SetMessagingServiceSid(service.twilioMessageServiceSID)
 	params.SetTo(phoneNumber)
 
 	if _, err := service.twilioClient.Api.CreateMessage(params); err != nil {

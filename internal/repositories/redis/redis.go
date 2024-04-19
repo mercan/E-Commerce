@@ -2,7 +2,7 @@ package redis
 
 import (
 	"github.com/mercan/ecommerce/internal/config"
-	"github.com/mercan/ecommerce/internal/utils"
+	"github.com/mercan/ecommerce/internal/helpers"
 	"github.com/redis/go-redis/v9"
 	"log"
 )
@@ -10,7 +10,7 @@ import (
 var client = Connect()
 
 func Connect() *redis.Client {
-	ctx, cancel := utils.ContextWithTimeout(10)
+	ctx, cancel := helpers.ContextWithTimeout(10)
 	defer cancel()
 
 	opt, err := redis.ParseURL(config.GetRedisConfig().URI)

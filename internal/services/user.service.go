@@ -2,25 +2,28 @@ package services
 
 import (
 	"errors"
-	"github.com/mercan/ecommerce/internal/config"
+	"github.com/mercan/ecommerce/internal/helpers"
 	"github.com/mercan/ecommerce/internal/models"
 	"github.com/mercan/ecommerce/internal/repositories/mongodb"
 	"github.com/mercan/ecommerce/internal/repositories/redis"
-	"github.com/mercan/ecommerce/internal/utils"
+	"github.com/mercan/ecommerce/internal/validators"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"time"
 )
 
 type UserService interface {
-	Register(user *models.User, userAgent string) (string, error)
-	Login(user models.UserLoginInput, IPAddress, userAgent string) (string, error)
+	Register(user *models.User) (string, error)
+	Login(user models.UserLoginRequest) (string, error)
 	Logout(token string, expFloat64 float64) error
-	ChangePassword(userId primitive.ObjectID, user models.UserChangePasswordInput, token string, expFloat64 float64) (string, error)
-	ChangeEmail(userId primitive.ObjectID, user models.UserChangeEmailInput, token string, expFloat64 float64) (string, error)
-	VerifyEmail(userId primitive.ObjectID, user models.UserVerificationInput) error
+	ChangePassword(userId primitive.ObjectID, user models.UserChangePasswordRequest, token string,
+		expFloat64 float64) (string, error)
+	ChangeEmail(userId primitive.ObjectID, user models.UserChangeEmailRequest, token string, expFloat64 float64) (string, error)
+	VerifyEmail(userId primitive.ObjectID, user models.UserVerificationRequest) error
 	ResendEmailVerification(userId primitive.ObjectID) error
-	VerifyPhone(userId primitive.ObjectID, user models.UserVerificationInput) error
+	VerifyPhone(userId primitive.ObjectID, user models.UserVerificationRequest) error
 	ResendPhoneVerification(userId primitive.ObjectID) error
 }
 
@@ -42,51 +45,20 @@ func NewUserService() UserService {
 	}
 }
 
-func (service *UserServiceImpl) Register(user *models.User, userAgent string) (string, error) {
-	if err := utils.UserRegisterValidate(user); err != nil {
+func (service *UserServiceImpl) Register(user *models.User) (string, error) {
+	if emailExists, err := service.userRepo.CheckEmailExists(user.Email); err != nil {
 		return "", err
-	}
-
-	existingPhone, err := service.userRepo.CheckPhoneExists(user.PhoneNumber)
-	if err != nil {
-		return "", errors.New("Internal Server Error")
-	}
-
-	if existingPhone {
-		return "", errors.New("Phone number already exists")
-	}
-
-	existingEmail, err := service.userRepo.CheckEmailExists(user.Email)
-	if err != nil {
-		return "", errors.New("Internal Server Error")
-	}
-
-	if existingEmail {
+	} else if emailExists {
 		return "", errors.New("Email already exists")
 	}
 
-	if hashedPassword, err := utils.HashPassword(user.Password); err != nil {
+	hashedPassword, err := helpers.HashPassword(user.Password)
+	if err != nil {
 		return "", errors.New("Password hashing failed")
-	} else {
-		user.Password = hashedPassword
 	}
+	user.Password = hashedPassword
 
-	user.LoginHistory[0].LoginSuccess = true
-	user.LoginHistory[0].CreatedAt = time.Now()
-
-	if location := utils.GetLocationFromIP(user.LoginHistory[0].IP); location != nil {
-		user.LoginHistory[0].City = location.City
-		user.LoginHistory[0].Region = location.Region
-		user.LoginHistory[0].Country = location.Country
-	}
-
-	if ua := utils.ParseUserAgent(userAgent); ua != nil {
-		user.LoginHistory[0].Device = ua.Device
-		user.LoginHistory[0].Platform = ua.OS
-		user.LoginHistory[0].Browser = ua.Browser
-	}
-
-	token, err := utils.GenerateJWT(user.ID, config.GetJWTConfig().UserRole)
+	token, err := helpers.GenerateJWT(user.ID)
 	if err != nil {
 		return "", errors.New("Token generation failed")
 	}
@@ -98,13 +70,15 @@ func (service *UserServiceImpl) Register(user *models.User, userAgent string) (s
 	return token, nil
 }
 
-func (service *UserServiceImpl) Login(user models.UserLoginInput, IPAddress, userAgent string) (string, error) {
-	if err := utils.ValidateStruct(user); err != nil {
+func (service *UserServiceImpl) Login(user models.UserLoginRequest) (string, error) {
+	if err := validators.ValidateStruct(user); err != nil {
 		return "", err
 	}
 
-	// Bütün user datalarını almak yerine sadece email ve password'ü al.
-	userDoc, err := service.userRepo.GetUserByEmail(user.Email)
+	project := bson.D{{"email", 1}, {"password", 1}}
+	findOneOptions := options.FindOne().SetProjection(project)
+
+	userDoc, err := service.userRepo.GetUserByEmail(user.Email, findOneOptions)
 	if err != nil {
 		return "", err
 	}
@@ -113,42 +87,15 @@ func (service *UserServiceImpl) Login(user models.UserLoginInput, IPAddress, use
 		return "", errors.New("Invalid email or password")
 	}
 
-	loginHistory := models.LoginHistory{
-		IP:           IPAddress,
-		LoginSuccess: false,
-		CreatedAt:    time.Now(),
-	}
-
-	if location := utils.GetLocationFromIP(IPAddress); location != nil {
-		loginHistory.City = location.City
-		loginHistory.Region = location.Region
-		loginHistory.Country = location.Country
-	}
-
-	if ua := utils.ParseUserAgent(userAgent); ua != nil {
-		loginHistory.Device = ua.Device
-		loginHistory.Platform = ua.OS
-		loginHistory.Browser = ua.Browser
-	}
-
-	if userDoc == nil {
-		service.userRepo.AddLoginHistory(userDoc.ID, loginHistory)
+	if result := helpers.VerifyPassword(userDoc.Password, user.Password); result != true {
 		return "", errors.New("Invalid email or password")
 	}
 
-	if result := utils.VerifyPassword(userDoc.Password, user.Password); result != true {
-		service.userRepo.AddLoginHistory(userDoc.ID, loginHistory)
-		return "", errors.New("Invalid email or password")
-	}
-
-	loginHistory.LoginSuccess = true
-	token, err := utils.GenerateJWT(userDoc.ID, config.GetJWTConfig().UserRole)
+	token, err := helpers.GenerateJWT(userDoc.ID)
 	if err != nil {
-		service.userRepo.AddLoginHistory(userDoc.ID, loginHistory)
 		return "", errors.New("Token generation failed")
 	}
 
-	service.userRepo.AddLoginHistory(userDoc.ID, loginHistory)
 	return token, nil
 }
 
@@ -168,8 +115,8 @@ func (service *UserServiceImpl) Logout(token string, expFloat64 float64) error {
 	return nil
 }
 
-func (service *UserServiceImpl) ChangePassword(userId primitive.ObjectID, user models.UserChangePasswordInput, token string, expFloat64 float64) (string, error) {
-	if err := utils.ValidateStruct(user); err != nil {
+func (service *UserServiceImpl) ChangePassword(userId primitive.ObjectID, user models.UserChangePasswordRequest, token string, expFloat64 float64) (string, error) {
+	if err := validators.ValidateStruct(user); err != nil {
 		return "", err
 	}
 
@@ -182,7 +129,7 @@ func (service *UserServiceImpl) ChangePassword(userId primitive.ObjectID, user m
 		return "", errors.New("User not found")
 	}
 
-	if result := utils.VerifyPassword(userDoc.Password, user.Password); result != true {
+	if result := helpers.VerifyPassword(userDoc.Password, user.Password); result != true {
 		return "", errors.New("Invalid password")
 	}
 
@@ -206,7 +153,7 @@ func (service *UserServiceImpl) ChangePassword(userId primitive.ObjectID, user m
 		return "", err
 	}
 
-	newToken, err := utils.GenerateJWT(userDoc.ID, config.GetJWTConfig().UserRole)
+	newToken, err := helpers.GenerateJWT(userDoc.ID)
 	if err != nil {
 		return "", errors.New("Token generation failed")
 	}
@@ -214,8 +161,8 @@ func (service *UserServiceImpl) ChangePassword(userId primitive.ObjectID, user m
 	return newToken, nil
 }
 
-func (service *UserServiceImpl) ChangeEmail(userId primitive.ObjectID, user models.UserChangeEmailInput, token string, expFloat64 float64) (string, error) {
-	if err := utils.ValidateStruct(user); err != nil {
+func (service *UserServiceImpl) ChangeEmail(userId primitive.ObjectID, user models.UserChangeEmailRequest, token string, expFloat64 float64) (string, error) {
+	if err := validators.ValidateStruct(user); err != nil {
 		return "", err
 	}
 
@@ -257,7 +204,7 @@ func (service *UserServiceImpl) ChangeEmail(userId primitive.ObjectID, user mode
 		return "", err
 	}
 
-	newToken, err := utils.GenerateJWT(userDoc.ID, config.GetJWTConfig().UserRole)
+	newToken, err := helpers.GenerateJWT(userDoc.ID)
 	if err != nil {
 		return "", errors.New("Token generation failed")
 	}
@@ -265,8 +212,8 @@ func (service *UserServiceImpl) ChangeEmail(userId primitive.ObjectID, user mode
 	return newToken, nil
 }
 
-func (service *UserServiceImpl) VerifyEmail(userId primitive.ObjectID, user models.UserVerificationInput) error {
-	if err := utils.ValidateStruct(user); err != nil {
+func (service *UserServiceImpl) VerifyEmail(userId primitive.ObjectID, user models.UserVerificationRequest) error {
+	if err := validators.ValidateStruct(user); err != nil {
 		return err
 	}
 
@@ -315,8 +262,8 @@ func (service *UserServiceImpl) ResendEmailVerification(userId primitive.ObjectI
 	return nil
 }
 
-func (service *UserServiceImpl) VerifyPhone(userId primitive.ObjectID, user models.UserVerificationInput) error {
-	if err := utils.ValidateStruct(user); err != nil {
+func (service *UserServiceImpl) VerifyPhone(userId primitive.ObjectID, user models.UserVerificationRequest) error {
+	if err := validators.ValidateStruct(user); err != nil {
 		return err
 	}
 

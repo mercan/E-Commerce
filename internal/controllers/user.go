@@ -2,25 +2,24 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+
+	"github.com/mercan/ecommerce/internal/helpers"
 	"github.com/mercan/ecommerce/internal/models"
 	"github.com/mercan/ecommerce/internal/repositories/rabbitmq"
 	"github.com/mercan/ecommerce/internal/services"
 	"github.com/mercan/ecommerce/internal/types"
-	"github.com/mercan/ecommerce/internal/utils"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type UserController struct {
 	userService services.UserService
 	EmailQueue  rabbitmq.EmailQueueManager
-	PhoneQueue  rabbitmq.PhoneQueueManager
 }
 
 func NewUserController() *UserController {
 	return &UserController{
 		userService: services.NewUserService(),
 		EmailQueue:  rabbitmq.NewEmailQueueManager(),
-		PhoneQueue:  rabbitmq.NewPhoneQueueManager(),
 	}
 }
 
@@ -28,79 +27,59 @@ func (controller *UserController) Register(ctx *fiber.Ctx) error {
 	user := models.NewUser()
 
 	if err := ctx.BodyParser(user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserRegisterResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
-	ip := "85.108.1.177" // IP address for testing purposes only - ctx.IP() is not working on localhost
-	user.LoginHistory = append(user.LoginHistory, models.LoginHistory{
-		IP: ip,
-	})
-	userAgent := ctx.GetReqHeaders()["User-Agent"]
+	if err := user.RegisterValidation(); err != nil {
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
+		})
+	}
 
-	token, err := controller.userService.Register(user, userAgent)
+	token, err := controller.userService.Register(user)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserRegisterResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	// Publish email verification message to RabbitMQ
 	controller.EmailQueue.PublishEmailVerification(user.FirstName, user.Email)
-	// Publish SMS verification message to RabbitMQ
-	controller.PhoneQueue.PublishPhoneVerification(user.PhoneNumber)
 
 	return ctx.Status(fiber.StatusCreated).JSON(types.UserRegisterResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusCreated,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 		Token: token,
 	})
 }
 
 func (controller *UserController) Login(ctx *fiber.Ctx) error {
-	var user models.UserLoginInput
+	var user models.UserLoginRequest
 
 	if err := ctx.BodyParser(&user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserLoginResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
-	ip := "78.176.227.107" // IP address for testing purposes only - ctx.IP() is not working on localhost
-	userAgent := ctx.GetReqHeaders()["User-Agent"]
-
-	token, err := controller.userService.Login(user, ip, userAgent)
+	token, err := controller.userService.Login(user)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserLoginResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserLoginResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 		Token: token,
 	})
@@ -112,140 +91,108 @@ func (controller *UserController) Logout(ctx *fiber.Ctx) error {
 
 	err := controller.userService.Logout(token, expFloat64)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserLogoutResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserLogoutResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 	})
 }
 
 func (controller *UserController) ChangePassword(ctx *fiber.Ctx) error {
-	var user models.UserChangePasswordInput
+	var user models.UserChangePasswordRequest
 
 	token := ctx.Locals("token").(string)
 	expFloat64 := ctx.Locals("exp").(float64)
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := ctx.BodyParser(&user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserChangePasswordResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	if user.NewPassword != user.NewPasswordConfirm {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserChangePasswordResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: "New password and new password confirm do not match",
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   "New password and new password confirm do not match",
 		})
 	}
 
 	newToken, err := controller.userService.ChangePassword(userId, user, token, expFloat64)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserChangePasswordResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserChangePasswordResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 		Token: newToken,
 	})
 }
 
 func (controller *UserController) ChangeEmail(ctx *fiber.Ctx) error {
-	var user models.UserChangeEmailInput
+	var user models.UserChangeEmailRequest
 
 	token := ctx.Locals("token").(string)
 	expFloat64 := ctx.Locals("exp").(float64)
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := ctx.BodyParser(&user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserChangeEmailResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	newToken, err := controller.userService.ChangeEmail(userId, user, token, expFloat64)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserChangeEmailResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserChangeEmailResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: false,
 		},
 		Token: newToken,
 	})
 }
 
 func (controller *UserController) VerifyEmail(ctx *fiber.Ctx) error {
-	var user models.UserVerificationInput
+	var user models.UserVerificationRequest
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := ctx.QueryParser(&user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserVerifyEmailResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	err := controller.userService.VerifyEmail(userId, user)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserVerifyEmailResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserVerifyEmailResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 	})
 }
@@ -254,53 +201,41 @@ func (controller *UserController) ResendEmailVerification(ctx *fiber.Ctx) error 
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := controller.userService.ResendEmailVerification(userId); err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserResendEmailVerificationResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserResendEmailVerificationResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 	})
 }
 
 func (controller *UserController) VerifyPhone(ctx *fiber.Ctx) error {
-	var user models.UserVerificationInput
+	var user models.UserVerificationRequest
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := ctx.QueryParser(&user); err != nil {
-		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.UserVerifyPhoneResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusUnprocessableEntity).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	err := controller.userService.VerifyPhone(userId, user)
 	if err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserVerifyPhoneResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusBadRequest,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserVerifyPhoneResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 	})
 
@@ -310,25 +245,21 @@ func (controller *UserController) ResendPhoneVerification(ctx *fiber.Ctx) error 
 	userId := ctx.Locals("userId").(primitive.ObjectID)
 
 	if err := controller.userService.ResendPhoneVerification(userId); err != nil {
-		return ctx.Status(fiber.StatusBadRequest).JSON(types.UserResendPhoneVerificationResponse{
-			UserBaseResponse: types.UserBaseResponse{
-				ErrorResponse: types.ErrorResponse{
-					Error: err.Error(),
-				},
-				Code: fiber.StatusUnprocessableEntity,
-			},
+		return ctx.Status(fiber.StatusBadRequest).JSON(types.BaseResponse{
+			Success: false,
+			Error:   err.Error(),
 		})
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(types.UserResendPhoneVerificationResponse{
-		UserBaseResponse: types.UserBaseResponse{
-			Code: fiber.StatusOK,
+		BaseResponse: types.BaseResponse{
+			Success: true,
 		},
 	})
 }
 
 func (controller *UserController) ForgotPassword(ctx *fiber.Ctx) error {
 	return ctx.JSON(fiber.Map{
-		"token": utils.GenerateForgotPasswordToken(),
+		"token": helpers.GenerateForgotPasswordToken(),
 	})
 }

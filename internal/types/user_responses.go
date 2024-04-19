@@ -1,50 +1,46 @@
 package types
 
-type ErrorResponse struct {
-	Error string `json:"error"`
-}
-
-type UserBaseResponse struct {
-	ErrorResponse
-	Code int `json:"code"`
+type BaseResponse struct {
+	Success bool   `json:"success"`
+	Error   string `json:"error,omitempty"`
 }
 
 type UserRegisterResponse struct {
-	UserBaseResponse
-	Token string `json:"token"`
+	BaseResponse
+	Token string `json:"token,omitempty"`
 }
 
 type UserLoginResponse struct {
-	UserBaseResponse
-	Token string `json:"token"`
+	BaseResponse
+	Token string `json:"token,omitempty"`
 }
 
 type UserLogoutResponse struct {
-	UserBaseResponse
+	BaseResponse
 }
 
 type UserChangePasswordResponse struct {
-	UserBaseResponse
-	Token string `json:"token"`
+	BaseResponse
+	Token string `json:"token,omitempty"`
 }
 
 type UserChangeEmailResponse struct {
-	UserBaseResponse
-	Token string `json:"token"`
+	BaseResponse
+	Token string `json:"token,omitempty"`
 }
 
 type UserVerifyEmailResponse struct {
-	UserBaseResponse
+	BaseResponse
 }
 
 type UserResendEmailVerificationResponse struct {
-	UserBaseResponse
+	BaseResponse
 }
 
 type UserVerifyPhoneResponse struct {
-	UserBaseResponse
+	BaseResponse
 }
 
 type UserResendPhoneVerificationResponse struct {
-	UserBaseResponse
+	BaseResponse
 }

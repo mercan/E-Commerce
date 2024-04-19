@@ -27,7 +27,6 @@ func (service *VerificationServiceImpl) VerifyEmail(email, verificationCode stri
 		if errors.Is(err, service.authRedisRepo.NilError()) {
 			return errors.New("verification code not found")
 		}
-
 		return err
 	}
 
@@ -36,7 +35,7 @@ func (service *VerificationServiceImpl) VerifyEmail(email, verificationCode stri
 	}
 
 	if err := service.authRedisRepo.DelVerificationEmail(email); err != nil {
-		fmt.Println("Error deleting email verification code from redis: ", err)
+		return fmt.Errorf("error deleting email verification code from redis: %v", err)
 	}
 
 	return nil
